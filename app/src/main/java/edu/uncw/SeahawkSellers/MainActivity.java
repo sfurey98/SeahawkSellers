@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent= getIntent();
 
         login = findViewById(R.id.login);
         mNameLabel = findViewById(R.id.hello);
@@ -52,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-//    public void signOut(View view) {
-//        mAuth.signOut();
-//        updateUI(null);
-//    }
 
     private boolean validateForm() {
         boolean valid = true;
