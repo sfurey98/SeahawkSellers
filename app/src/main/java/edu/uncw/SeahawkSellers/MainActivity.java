@@ -1,5 +1,6 @@
 package edu.uncw.SeahawkSellers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,9 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private FirebaseAuth mAuth;
-
-    private ConstraintLayout mLoggedInGroup;
-    private ConstraintLayout mLoggedOutGroup;
+    private ConstraintLayout login;
     private TextView mNameLabel;
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -35,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mLoggedInGroup = findViewById(R.id.logged_in_group);
-        mLoggedOutGroup = findViewById(R.id.logged_out_group);
+        login = findViewById(R.id.login);
         mNameLabel = findViewById(R.id.hello);
         mEmailField = findViewById(R.id.email);
         mPasswordField = findViewById(R.id.password);
@@ -50,19 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
-            mLoggedOutGroup.setVisibility(View.GONE);
-            mLoggedInGroup.setVisibility(View.VISIBLE);
-            mNameLabel.setText(String.format(getResources().getString(R.string.hello), currentUser.getEmail()));
-        } else {
-            mLoggedInGroup.setVisibility(View.GONE);
-            mLoggedOutGroup.setVisibility(View.VISIBLE);
+            Intent intent = new Intent(MainActivity.this, HomePage.class);
+            startActivity(intent);
         }
     }
 
-    public void signOut(View view) {
-        mAuth.signOut();
-        updateUI(null);
-    }
+//    public void signOut(View view) {
+//        mAuth.signOut();
+//        updateUI(null);
+//    }
 
     private boolean validateForm() {
         boolean valid = true;
@@ -89,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void signIn(View view) {
         if (!validateForm()) {
-            return;
+            Intent intent = new Intent(MainActivity.this, HomePage.class);
+            startActivity(intent);
+//            return;
         }
 
         String email = mEmailField.getText().toString();
@@ -131,14 +127,14 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+//                            updateUI(user);
                         } else {
                             // If registration fails, display a message to the user.
                             Exception e = task.getException();
                             Log.w(TAG, "createUserWithEmail:failure", e);
                             Toast.makeText(MainActivity.this, "Registration failed: " + e.getLocalizedMessage(),
                                     Toast.LENGTH_LONG).show();
-                            updateUI(null);
+//                            updateUI(null);
                         }
                     }
                 });
