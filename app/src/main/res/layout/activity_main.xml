@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context="edu.uncw.SeahawkSellers.MainActivity">
 
-
-    <!-- putting these into groups for simplicity's sake of making them all disappear/reappear -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login"
         android:layout_width="wrap_content"
@@ -21,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/email"
             app:layout_constraintEnd_toStartOf="@id/email"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/password_label"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/password"
             app:layout_constraintEnd_toStartOf="@id/password"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"
+            android:textColor="@color/black"
             android:onClick="signIn"
             app:layout_constraintTop_toBottomOf="@id/password"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
+            android:textColor="@color/black"
             android:onClick="createAccount"
             app:layout_constraintTop_toBottomOf="@id/login_button"
             app:layout_constraintStart_toStartOf="parent"
