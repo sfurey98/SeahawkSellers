@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="scarlet">#B10C0C</color>
-    <color name="gold">#916D25</color>
-    <color name="black">#050C10</color>
+    <color name="teal">#D7059C67</color>
+    <color name="yellow">#FFD600</color>
+    <color name="navy">#05125A</color>
+    <color name="black">#07080E</color>
+
 </resources>

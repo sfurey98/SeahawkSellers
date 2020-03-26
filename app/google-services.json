@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "388773597038",
+    "firebase_url": "https://seahawk-sellers.firebaseio.com",
+    "project_id": "seahawk-sellers",
+    "storage_bucket": "seahawk-sellers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388773597038:android:70bc00049fafbc66b67b7f",
+        "android_client_info": {
+          "package_name": "edu.uncw.SeahawkSellers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388773597038-rno3bqj0pch7ha17midmu43mgckuh1m2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu1nQdDpne89nFAtDrD2EuLSYoUn_UXAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388773597038-rno3bqj0pch7ha17midmu43mgckuh1m2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
