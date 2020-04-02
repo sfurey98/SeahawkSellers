@@ -81,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         if (!validateForm()) {
             return;
         }
-        Intent intent = new Intent(MainActivity.this, HomePage.class);
-        startActivity(intent);
+
 
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
@@ -94,14 +93,14 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            Intent intent = new Intent(MainActivity.this, HomePage.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Exception e = task.getException();
                             Log.w(TAG, "signInWithEmail:failure", e);
                             Toast.makeText(MainActivity.this, "Login failed: " + e.getLocalizedMessage(),
                                     Toast.LENGTH_LONG).show();
-                            updateUI(null);
                         }
                     }
                 });
