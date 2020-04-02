@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void signIn(View view) {
         if (!validateForm()) {
-            Intent intent = new Intent(MainActivity.this, HomePage.class);
-            startActivity(intent);
-//            return;
+            return;
         }
+        Intent intent = new Intent(MainActivity.this, HomePage.class);
+        startActivity(intent);
 
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
