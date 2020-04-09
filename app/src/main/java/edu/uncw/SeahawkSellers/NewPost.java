@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class NewPost extends AppCompatActivity {
     private static final String TAG = "NewPost";
-    private static final String ITEM = "Item";
+    private static final String ITEM = "Items";
     private FirebaseAuth mAuth;
     private final FirebaseFirestore mDb = FirebaseFirestore.getInstance();
     private EditText titleEdit;

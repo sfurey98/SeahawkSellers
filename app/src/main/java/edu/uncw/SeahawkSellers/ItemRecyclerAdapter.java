@@ -35,8 +35,8 @@ public class ItemRecyclerAdapter extends FirestoreRecyclerAdapter<Item, ItemRecy
        ItemViewHolder(CardView v) {
             super(v);
             view = v;
-            title = v.findViewById(R.id.item_description);
-            description = v.findViewById(R.id.item_seller);
+            title = v.findViewById(R.id.item_title);
+            description = v.findViewById(R.id.item_description);
             price = v.findViewById(R.id.item_price);
             seller = v.findViewById(R.id.item_seller);
         }
@@ -49,7 +49,7 @@ public class ItemRecyclerAdapter extends FirestoreRecyclerAdapter<Item, ItemRecy
         // - replace the contents of the view with that element
         holder.title.setText(item.getTitle());
         holder.description.setText(item.getDescription());
-        holder.price.setText(item.getPrice());
+        holder.price.setText("$ " +item.getPrice());
         holder.seller.setText(item.getSeller());
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

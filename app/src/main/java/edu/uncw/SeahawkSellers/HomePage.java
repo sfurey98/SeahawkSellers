@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class HomePage extends AppCompatActivity {
-    private static final String ITEMS = "Items";
+    private static final String ITEM = "Items";
     private static final String TAG = "HomePage";
     private FirebaseAuth mAuth;
     private TextView mNameLabel;
@@ -35,8 +35,7 @@ public class HomePage extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
-        Query query = mDb.collection(ITEMS)
-                .orderBy("createdTime", Query.Direction.ASCENDING);
+        Query query = mDb.collection(ITEM);
         FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
                 .setQuery(query, Item.class)
                 .build();
@@ -46,7 +45,7 @@ public class HomePage extends AppCompatActivity {
             public void onItemClick(int position) {
                 Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
                 String id = mAdapter.getSnapshots().getSnapshot(position).getId();
-                mDb.collection(ITEMS).document(id).delete();
+                mDb.collection(ITEM).document(id).delete();
             }
         });
         recyclerView.setAdapter(mAdapter);
