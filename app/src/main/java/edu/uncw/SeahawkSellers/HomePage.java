@@ -31,7 +31,7 @@ public class HomePage extends AppCompatActivity {
         mNameLabel.setText(String.format(getResources().getString(R.string.hello), currentUser.getEmail()));
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
         Query query = mDb.collection(ITEMS);
         FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
@@ -41,9 +41,9 @@ public class HomePage extends AppCompatActivity {
         mAdapter = new ItemRecyclerAdapter(options, new ItemRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
-                String id = mAdapter.getSnapshots().getSnapshot(position).getId();
-                mDb.collection(ITEMS).document(id).delete();
+//                Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
+//                String id = mAdapter.getSnapshots().getSnapshot(position).getId();
+//                mDb.collection(ITEMS).document(id).delete();
             }
         });
         recyclerView.setAdapter(mAdapter);

@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".HomePage">
         </activity>
+        <activity android:name=".NewPost">
+        </activity>
     </application>
 
 </manifest>
