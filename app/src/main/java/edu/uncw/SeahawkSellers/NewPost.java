@@ -2,6 +2,7 @@ package edu.uncw.SeahawkSellers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,6 +40,9 @@ public class NewPost extends AppCompatActivity {
         priceEdit = findViewById(R.id.price_edit);
     }
     public void addItem(View v) {
+        if (!validateForm()) {
+            return;
+        }
         FirebaseUser currentUser = mAuth.getCurrentUser();
         String user= currentUser.getEmail().toString();
         String title = titleEdit.getText().toString();
@@ -64,6 +68,36 @@ public class NewPost extends AppCompatActivity {
                 });
         Intent intent = new Intent(NewPost.this, HomePage.class);
         startActivity(intent);
+    }
+
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String title = titleEdit.getText().toString();
+        if (TextUtils.isEmpty(title)) {
+            titleEdit.setError("Required.");
+            valid = false;
+        } else {
+            titleEdit.setError(null);
+        }
+
+        String description = descriptionEdit.getText().toString();
+        if (TextUtils.isEmpty(description)) {
+            descriptionEdit.setError("Required.");
+            valid = false;
+        } else {
+            descriptionEdit.setError(null);
+        }
+
+        String price = priceEdit.getText().toString();
+        if (TextUtils.isEmpty(price)) {
+            priceEdit.setError("Required.");
+            valid = false;
+        } else {
+            priceEdit.setError(null);
+        }
+
+        return valid;
     }
 
 

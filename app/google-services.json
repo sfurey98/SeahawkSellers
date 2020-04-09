@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "388773597038-d773mbuanc8afm2a7jm1rhkq863fo8qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.uncw.SeahawkSellers",
+            "certificate_hash": "644bf9ecbcba34b5f05ef7b0505b275420277c24"
+          }
+        },
+        {
           "client_id": "388773597038-rno3bqj0pch7ha17midmu43mgckuh1m2.apps.googleusercontent.com",
           "client_type": 3
         }
