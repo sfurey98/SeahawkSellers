@@ -27,12 +27,13 @@ public class EditPost extends AppCompatActivity {
     private EditText titleEdit;
     private EditText descriptionEdit;
     private EditText priceEdit;
+    private ItemRecyclerAdapter mAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newpost);
+        setContentView(R.layout.activity_editpost);
         Intent intent = getIntent();
         mAuth = FirebaseAuth.getInstance();
         titleEdit = findViewById(R.id.title_edit);
@@ -45,31 +46,31 @@ public class EditPost extends AppCompatActivity {
         descriptionEdit.setText(description);
         priceEdit.setText(price);
     }
-    public void addItem(View v) {
+    public void editItem(View v) {
         if (!validateForm()) {
             return;
         }
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        String user= currentUser.getEmail().toString();
+        String user= currentUser.getEmail();
         String title = titleEdit.getText().toString();
         String description = descriptionEdit.getText().toString();
         String price = priceEdit.getText().toString();
 
         Item newItem = new Item(title, description, price, user);
 
-        Toast.makeText(this, "Adding " + title, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Updating " + title, Toast.LENGTH_SHORT).show();
         mDb.collection(ITEM)
                 .add(newItem)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "Item added with ID: " + documentReference.getId());
+                        Log.d(TAG, "Item updated with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding item", e);
+                        Log.w(TAG, "Error updating item", e);
                     }
                 });
         Intent intent = new Intent(EditPost.this, HomePage.class);
