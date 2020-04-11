@@ -14,4 +14,6 @@
     <string name="newPost">New Post</string>
     <string name="noItem"></string>
     <string name="post">Post</string>
+    <string name="saveChanges">Save Changes</string>
+    <string name="edit">Edit</string>
 </resources>

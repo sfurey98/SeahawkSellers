@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 ;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,12 +29,13 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         Intent intent = getIntent();
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        final String email = currentUser.getEmail();
         mNameLabel = findViewById(R.id.hello);
-        mNameLabel.setText(String.format(getResources().getString(R.string.hello), currentUser.getEmail()));
+        mNameLabel.setText(String.format(getResources().getString(R.string.hello), email));
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        final RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         Query query = mDb.collection(ITEM);
         FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
@@ -44,8 +46,12 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
+                if (item.getSeller().equals(email)){
+                editPost(item);
                 String id = mAdapter.getSnapshots().getSnapshot(position).getId();
                 mDb.collection(ITEM).document(id).delete();
+                }
+
             }
         });
         recyclerView.setAdapter(mAdapter);
@@ -74,6 +80,16 @@ public class HomePage extends AppCompatActivity {
 
     public void newPost(View view) {
         Intent intent = new Intent(HomePage.this, NewPost.class);
+        startActivity(intent);
+    }
+    public void editPost(Item item){
+        Intent intent = new Intent(HomePage.this, EditPost.class);
+        String title= item.getTitle();
+        String description= item.getDescription();
+        String price= item.getPrice();
+        intent.putExtra("TITLE", title);
+        intent.putExtra("DESCRIPTION", description);
+        intent.putExtra("PRICE", price);
         startActivity(intent);
     }
 

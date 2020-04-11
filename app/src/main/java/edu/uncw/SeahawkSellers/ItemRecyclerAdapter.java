@@ -3,6 +3,7 @@ package edu.uncw.SeahawkSellers;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class ItemRecyclerAdapter extends FirestoreRecyclerAdapter<Item, ItemRecy
             description = v.findViewById(R.id.item_description);
             price = v.findViewById(R.id.item_price);
             seller = v.findViewById(R.id.item_seller);
+
         }
     }
 
@@ -49,7 +51,7 @@ public class ItemRecyclerAdapter extends FirestoreRecyclerAdapter<Item, ItemRecy
         // - replace the contents of the view with that element
         holder.title.setText(item.getTitle());
         holder.description.setText(item.getDescription());
-        holder.price.setText("$ " +item.getPrice());
+        holder.price.setText("$" +item.getPrice());
         holder.seller.setText(item.getSeller());
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

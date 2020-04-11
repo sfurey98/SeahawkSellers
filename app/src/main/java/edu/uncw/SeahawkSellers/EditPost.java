@@ -19,8 +19,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class NewPost extends AppCompatActivity {
-    private static final String TAG = "NewPost";
+public class EditPost extends AppCompatActivity {
+    private static final String TAG = "EditPost";
     private static final String ITEM = "Items";
     private FirebaseAuth mAuth;
     private final FirebaseFirestore mDb = FirebaseFirestore.getInstance();
@@ -38,13 +38,19 @@ public class NewPost extends AppCompatActivity {
         titleEdit = findViewById(R.id.title_edit);
         descriptionEdit = findViewById(R.id.description_edit);
         priceEdit = findViewById(R.id.price_edit);
+        String title = intent.getStringExtra("TITLE");
+        String description = intent.getStringExtra("DESCRIPTION");
+        String price = intent.getStringExtra("PRICE");
+        titleEdit.setText(title);
+        descriptionEdit.setText(description);
+        priceEdit.setText(price);
     }
     public void addItem(View v) {
         if (!validateForm()) {
             return;
         }
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        String user= currentUser.getEmail();
+        String user= currentUser.getEmail().toString();
         String title = titleEdit.getText().toString();
         String description = descriptionEdit.getText().toString();
         String price = priceEdit.getText().toString();
@@ -66,7 +72,7 @@ public class NewPost extends AppCompatActivity {
                         Log.w(TAG, "Error adding item", e);
                     }
                 });
-        Intent intent = new Intent(NewPost.this, HomePage.class);
+        Intent intent = new Intent(EditPost.this, HomePage.class);
         startActivity(intent);
     }
 

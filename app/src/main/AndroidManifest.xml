@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".NewPost">
         </activity>
+        <activity android:name=".EditPost">
+        </activity>
     </application>
 
 </manifest>
