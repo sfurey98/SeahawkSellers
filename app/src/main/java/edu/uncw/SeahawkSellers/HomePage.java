@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -101,9 +100,11 @@ public class HomePage extends AppCompatActivity {
         String title= item.getTitle();
         String description= item.getDescription();
         String price= item.getPrice();
+        String seller= item.getSeller();
         intent.putExtra("TITLE", title);
         intent.putExtra("DESCRIPTION", description);
         intent.putExtra("PRICE", price);
+        intent.putExtra("SELLER", seller);
         startActivity(intent);
     }
 }

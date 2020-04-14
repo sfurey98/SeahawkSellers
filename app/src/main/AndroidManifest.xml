@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".EditPost">
         </activity>
+        <activity android:name=".ViewPost">
+        </activity>
     </application>
 
 </manifest>
