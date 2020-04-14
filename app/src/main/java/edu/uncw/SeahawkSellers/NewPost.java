@@ -35,9 +35,9 @@ public class NewPost extends AppCompatActivity {
         setContentView(R.layout.activity_newpost);
         Intent intent = getIntent();
         mAuth = FirebaseAuth.getInstance();
-        titleEdit = findViewById(R.id.title_edit);
-        descriptionEdit = findViewById(R.id.description_edit);
-        priceEdit = findViewById(R.id.price_edit);
+        titleEdit = findViewById(R.id.title_display);
+        descriptionEdit = findViewById(R.id.description_display);
+        priceEdit = findViewById(R.id.price_display);
     }
     public void addItem(View v) {
         if (!validateForm()) {
@@ -51,7 +51,7 @@ public class NewPost extends AppCompatActivity {
 
         Item newItem = new Item(title, description, price, user);
 
-        Toast.makeText(this, "Adding " + title, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Posting " + title, Toast.LENGTH_SHORT).show();
         mDb.collection(ITEM)
                 .add(newItem)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

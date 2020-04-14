@@ -36,9 +36,9 @@ public class EditPost extends AppCompatActivity {
         setContentView(R.layout.activity_editpost);
         Intent intent = getIntent();
         mAuth = FirebaseAuth.getInstance();
-        titleEdit = findViewById(R.id.title_edit);
-        descriptionEdit = findViewById(R.id.description_edit);
-        priceEdit = findViewById(R.id.price_edit);
+        titleEdit = findViewById(R.id.title_display);
+        descriptionEdit = findViewById(R.id.description_display);
+        priceEdit = findViewById(R.id.price_display);
         String title = intent.getStringExtra("TITLE");
         String description = intent.getStringExtra("DESCRIPTION");
         String price = intent.getStringExtra("PRICE");
