@@ -46,10 +46,14 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
-                if (item.getSeller().equals(email)){
-                editPost(item);
-                String id = mAdapter.getSnapshots().getSnapshot(position).getId();
-                mDb.collection(ITEM).document(id).delete();
+                if (item.getSeller().equals(email)) {
+                    editPost( item );
+                    String id = mAdapter.getSnapshots().getSnapshot(position).getId();
+                    mDb.collection(ITEM).document(id).delete();
+                }else{
+                    viewPost( item );
+
+
                 }
 
             }
@@ -92,5 +96,14 @@ public class HomePage extends AppCompatActivity {
         intent.putExtra("PRICE", price);
         startActivity(intent);
     }
-
+    public void viewPost(Item item){
+        Intent intent = new Intent(HomePage.this, ViewPost.class);
+        String title= item.getTitle();
+        String description= item.getDescription();
+        String price= item.getPrice();
+        intent.putExtra("TITLE", title);
+        intent.putExtra("DESCRIPTION", description);
+        intent.putExtra("PRICE", price);
+        startActivity(intent);
+    }
 }

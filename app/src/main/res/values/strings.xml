@@ -12,8 +12,8 @@
     <string name="price_label">Price: $</string>
     <string name="seller_label">Seller:</string>
     <string name="newPost">New Post</string>
-    <string name="noItem"></string>
     <string name="post">Post</string>
     <string name="saveChanges">Save Changes</string>
     <string name="edit">Edit</string>
+    <string name="Buy">Buy</string>
 </resources>
