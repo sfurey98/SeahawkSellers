@@ -3,15 +3,9 @@ package edu.uncw.SeahawkSellers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 public class ViewPost extends AppCompatActivity {
-    private static final String TAG = "ViewPost";
-    private static final String ITEM = "Items";
-    private FirebaseAuth mAuth;
     private TextView titleDisplay;
     private TextView descriptionDisplay;
     private TextView priceDisplay;
@@ -23,7 +17,6 @@ public class ViewPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewpost);
         Intent intent = getIntent();
-        mAuth = FirebaseAuth.getInstance();
         titleDisplay = findViewById(R.id.title_display);
         descriptionDisplay = findViewById(R.id.description_display);
         priceDisplay = findViewById(R.id.price_display);
