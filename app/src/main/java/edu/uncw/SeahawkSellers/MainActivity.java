@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= getIntent();
 
         login = findViewById(R.id.login);
-        mNameLabel = findViewById(R.id.hello);
         mEmailField = findViewById(R.id.email);
         mPasswordField = findViewById(R.id.password);
 
