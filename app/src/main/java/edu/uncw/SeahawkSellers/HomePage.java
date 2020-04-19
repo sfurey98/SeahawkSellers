@@ -65,7 +65,6 @@ public class HomePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = mAuth.getCurrentUser();
         final String email = currentUser.getEmail();
-        Toast.makeText(HomePage.this, String.format(getResources().getString(R.string.hello), email), Toast.LENGTH_SHORT).show();
 
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -80,9 +79,8 @@ public class HomePage extends AppCompatActivity {
             public void onItemClick(int position) {
                 Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
                 if (item.getSeller().equals(email)) {
-                    editPost(item);
                     String id = mAdapter.getSnapshots().getSnapshot(position).getId();
-                    mDb.collection(ITEM).document(id).delete();
+                    editPost(item, id);
                 } else {
                     viewPost(item);
 
@@ -171,7 +169,7 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(HomePage.this, NewPost.class);
         startActivity(intent);
     }
-    public void editPost(Item item){
+    public void editPost(Item item, String id){
         Intent intent = new Intent(HomePage.this, EditPost.class);
         String title= item.getTitle();
         String description= item.getDescription();
@@ -179,6 +177,7 @@ public class HomePage extends AppCompatActivity {
         intent.putExtra("TITLE", title);
         intent.putExtra("DESCRIPTION", description);
         intent.putExtra("PRICE", price);
+        intent.putExtra("ID", id);
         startActivity(intent);
     }
     public void viewPost(Item item){

@@ -21,13 +21,19 @@
         </activity>
         <activity android:name=".HomePage">
         </activity>
-        <activity android:name=".NewPost">
+        <activity android:name=".NewPost"
+                  android:parentActivityName=".HomePage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomePage"/>
         </activity>
-        <activity android:name=".EditPost">
-
+        <activity android:name=".EditPost"
+                  android:parentActivityName=".HomePage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomePage"/>
         </activity>
         <activity android:name=".ViewPost"
-
                   android:parentActivityName=".HomePage">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

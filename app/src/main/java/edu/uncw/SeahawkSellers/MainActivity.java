@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String email= user.getEmail();
+                            Toast.makeText(MainActivity.this, String.format(getResources().getString(R.string.hello), email), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this, HomePage.class);
                             startActivity(intent);
                         } else {

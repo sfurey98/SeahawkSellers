@@ -9,8 +9,7 @@
     <string name="firestore_button">Launch Firestore Activity</string>
     <string name="title_label">Title:</string>
     <string name="description_label">Description:</string>
-    <string name="price_label">Price: $</string>
-    <string name="price_label2">Price:</string>
+    <string name="price_label">Price:</string>
     <string name="seller_label">Seller:</string>
     <string name="newPost">New Post</string>
     <string name="post">Post</string>

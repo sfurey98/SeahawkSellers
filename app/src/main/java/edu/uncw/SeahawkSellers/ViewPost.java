@@ -3,7 +3,10 @@ package edu.uncw.SeahawkSellers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class ViewPost extends AppCompatActivity {
     private TextView titleDisplay;
@@ -16,6 +19,10 @@ public class ViewPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewpost);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         titleDisplay = findViewById(R.id.title_display);
         descriptionDisplay = findViewById(R.id.description_display);
