@@ -57,7 +57,7 @@ public class NewPost extends AppCompatActivity {
 
         Item newItem = new Item(title, description, price, user);
 
-        Toast.makeText(this, "Posting " + title, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Posted " + title, Toast.LENGTH_SHORT).show();
         mDb.collection(ITEM)
                 .add(newItem)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

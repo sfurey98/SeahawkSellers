@@ -88,6 +88,14 @@ public class EditPost extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void deleteItem(View v){
+        mDb.collection(ITEM).document(ID).delete();
+        Intent intent = new Intent(EditPost.this, HomePage.class);
+        String title = titleEdit.getText().toString();
+        Toast.makeText(EditPost.this, "Deleted " + title, Toast.LENGTH_SHORT).show();
+        startActivity(intent);
+    }
+
     private boolean validateForm() {
         boolean valid = true;
 
