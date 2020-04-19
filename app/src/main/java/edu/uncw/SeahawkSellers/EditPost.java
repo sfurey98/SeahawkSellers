@@ -46,6 +46,12 @@ public class EditPost extends AppCompatActivity {
         descriptionEdit.setText(description);
         priceEdit.setText(price);
     }
+
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void editItem(View v) {
         if (!validateForm()) {
             return;

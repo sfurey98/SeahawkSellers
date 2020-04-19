@@ -19,7 +19,7 @@
             android:id="@+id/item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_label"
+            android:textColor="@color/navy"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:id="@+id/item_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/description_label"
+            android:textColor="@color/navy"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="@id/item_title"
             app:layout_constraintTop_toBottomOf="@id/item_title" />
@@ -37,7 +37,7 @@
             android:id="@+id/item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/price_label"
+            android:textColor="@color/navy"
             android:layout_marginTop="12dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/item_title"
@@ -47,11 +47,10 @@
             android:id="@+id/item_seller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/seller_label"
+            android:textColor="@color/navy"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="@id/item_title"
             app:layout_constraintTop_toBottomOf="@id/item_price"
-            app:layout_constraintBottom_toBottomOf="parent"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
