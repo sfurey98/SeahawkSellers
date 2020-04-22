@@ -44,9 +44,9 @@ public class ViewPost extends AppCompatActivity {
     public void contactSeller(View v){
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_EMAIL, seller);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {seller});
         intent.putExtra(Intent.EXTRA_SUBJECT, title);
-        startActivity(Intent.createChooser(intent, "Send Email"));
+        startActivity(intent);
 
     }
 }
