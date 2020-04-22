@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        String email = mEmailField.getText().toString();
+        final String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
 
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
+                            Toast.makeText(MainActivity.this, "User " + email + " Added",
+                                    Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
 //                            updateUI(user);
                         } else {

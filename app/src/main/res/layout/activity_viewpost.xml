@@ -102,4 +102,19 @@
         app:layout_constraintTop_toTopOf="@id/seller"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <Button
+        android:id="@+id/contact_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="10dp"
+        android:background="@color/navy"
+        android:onClick="contactSeller"
+        android:text="@string/contact"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seller_display"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

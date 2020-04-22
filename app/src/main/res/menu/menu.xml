@@ -9,6 +9,13 @@
         app:showAsAction="never|withText"/>
 
     <item
+        android:id="@+id/myPost"
+        android:orderInCategory="1"
+        android:title="@string/myPost"
+        app:showAsAction="never|withText"/>
+
+
+    <item
         android:id="@+id/logOut"
         android:orderInCategory="2"
         android:title="@string/logout"

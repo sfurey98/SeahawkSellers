@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "388773597038",
-    "firebase_url": "https://seahawk-sellers.firebaseio.com",
-    "project_id": "seahawk-sellers",
-    "storage_bucket": "seahawk-sellers.appspot.com"
+    "project_number": "950213910681",
+    "firebase_url": "https://seahawk-sellers-solo.firebaseio.com",
+    "project_id": "seahawk-sellers-solo",
+    "storage_bucket": "seahawk-sellers-solo.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:388773597038:android:70bc00049fafbc66b67b7f",
+        "mobilesdk_app_id": "1:950213910681:android:a7891fd0ebc34d9dc71808",
         "android_client_info": {
           "package_name": "edu.uncw.SeahawkSellers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "388773597038-d773mbuanc8afm2a7jm1rhkq863fo8qm.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "edu.uncw.SeahawkSellers",
-            "certificate_hash": "644bf9ecbcba34b5f05ef7b0505b275420277c24"
-          }
-        },
-        {
-          "client_id": "388773597038-rno3bqj0pch7ha17midmu43mgckuh1m2.apps.googleusercontent.com",
+          "client_id": "950213910681-eetaudcel89t4jri8jenek8a4g4a9mq9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDu1nQdDpne89nFAtDrD2EuLSYoUn_UXAQ"
+          "current_key": "AIzaSyA5aB6kcSL0Zr1v_fSolCuI7UfTOZpoQJM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "388773597038-rno3bqj0pch7ha17midmu43mgckuh1m2.apps.googleusercontent.com",
+              "client_id": "950213910681-eetaudcel89t4jri8jenek8a4g4a9mq9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

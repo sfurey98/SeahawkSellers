@@ -16,4 +16,6 @@
     <string name="saveChanges">Save Changes</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="myPost">My Posts</string>
+    <string name="contact">Contact Seller</string>
 </resources>

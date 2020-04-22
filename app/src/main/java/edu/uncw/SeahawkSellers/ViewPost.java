@@ -2,6 +2,7 @@ package edu.uncw.SeahawkSellers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -13,6 +14,8 @@ public class ViewPost extends AppCompatActivity {
     private TextView descriptionDisplay;
     private TextView priceDisplay;
     private TextView sellerDisplay;
+    private String seller;
+    private String title;
 
 
     @Override
@@ -28,13 +31,22 @@ public class ViewPost extends AppCompatActivity {
         descriptionDisplay = findViewById(R.id.description_display);
         priceDisplay = findViewById(R.id.price_display);
         sellerDisplay = findViewById(R.id.seller_display);
-        String title = intent.getStringExtra("TITLE");
+        title = intent.getStringExtra("TITLE");
         String description = intent.getStringExtra("DESCRIPTION");
         String price = intent.getStringExtra("PRICE");
-        String seller = intent.getStringExtra("SELLER");
+        seller = intent.getStringExtra("SELLER");
         titleDisplay.setText(title);
         descriptionDisplay.setText(description);
         priceDisplay.setText("$" +price);
         sellerDisplay.setText(seller);
+    }
+
+    public void contactSeller(View v){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, seller);
+        intent.putExtra(Intent.EXTRA_SUBJECT, title);
+        startActivity(Intent.createChooser(intent, "Send Email"));
+
     }
 }

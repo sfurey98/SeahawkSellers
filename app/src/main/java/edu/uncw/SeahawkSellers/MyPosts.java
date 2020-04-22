@@ -2,9 +2,8 @@ package edu.uncw.SeahawkSellers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,20 +15,21 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class HomePage extends AppCompatActivity {
+public class MyPosts extends AppCompatActivity {
     private static final String ITEM = "Items";
-    private static final String TAG = "HomePage";
+    private static final String TAG = "MyPosts";
     private FirebaseAuth mAuth;
     private final FirebaseFirestore mDb = FirebaseFirestore.getInstance();
     private ItemRecyclerAdapter mAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_mypost);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
 
         mAuth = FirebaseAuth.getInstance();
@@ -39,27 +39,21 @@ public class HomePage extends AppCompatActivity {
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        Query query = mDb.collection(ITEM);
+        Query query = mDb.collection(ITEM).whereEqualTo("seller", email);
         FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
                 .setQuery(query, Item.class)
                 .build();
+
 
         mAdapter = new ItemRecyclerAdapter(options, new ItemRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
-                if (item.getSeller().equals(email)) {
                     String id = mAdapter.getSnapshots().getSnapshot(position).getId();
                     editPost(item, id);
-                } else {
-                    viewPost(item);
-
-
-                }
 
             }
         });
-
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -78,43 +72,8 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.newPost:
-                newPost();
-                return true;
-
-            case R.id.myPost:
-                myPost();
-                return true;
-
-            case R.id.logOut:
-                signOut();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void signOut() {
-        mAuth.signOut();
-        Intent intent = new Intent(HomePage.this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void newPost() {
-        Intent intent = new Intent(HomePage.this, NewPost.class);
-        startActivity(intent);
-    }
-
     public void editPost(Item item, String id) {
-        Intent intent = new Intent(HomePage.this, EditPost.class);
+        Intent intent = new Intent(MyPosts.this, EditPost.class);
         String title = item.getTitle();
         String description = item.getDescription();
         String price = item.getPrice();
@@ -124,26 +83,4 @@ public class HomePage extends AppCompatActivity {
         intent.putExtra("ID", id);
         startActivity(intent);
     }
-
-    public void viewPost(Item item) {
-        Intent intent = new Intent(HomePage.this, ViewPost.class);
-        String title = item.getTitle();
-        String description = item.getDescription();
-        String price = item.getPrice();
-        String seller = item.getSeller();
-        intent.putExtra("TITLE", title);
-        intent.putExtra("DESCRIPTION", description);
-        intent.putExtra("PRICE", price);
-        intent.putExtra("SELLER", seller);
-        startActivity(intent);
-    }
-
-    public void myPost() {
-        Intent intent = new Intent(HomePage.this, MyPosts.class);
-        startActivity(intent);
-    }
-
-
 }
-
-
