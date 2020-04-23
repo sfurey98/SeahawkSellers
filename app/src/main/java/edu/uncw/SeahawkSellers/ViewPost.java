@@ -47,6 +47,5 @@ public class ViewPost extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_EMAIL, new String[] {seller});
         intent.putExtra(Intent.EXTRA_SUBJECT, title);
         startActivity(intent);
-
     }
 }

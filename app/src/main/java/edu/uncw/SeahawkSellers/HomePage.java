@@ -1,9 +1,12 @@
 package edu.uncw.SeahawkSellers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -22,6 +25,7 @@ public class HomePage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private final FirebaseFirestore mDb = FirebaseFirestore.getInstance();
     private ItemRecyclerAdapter mAdapter;
+    private EditText searchBar;
 
 
     @Override
@@ -35,6 +39,7 @@ public class HomePage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = mAuth.getCurrentUser();
         final String email = currentUser.getEmail();
+        searchBar= findViewById(R.id.search_edit);
 
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -141,6 +146,14 @@ public class HomePage extends AppCompatActivity {
     public void myPost() {
         Intent intent = new Intent(HomePage.this, MyPosts.class);
         startActivity(intent);
+    }
+
+    public void search(View v){
+        String searched = searchBar.getText().toString();
+        Query query = mDb.collection(ITEM).whereArrayContains("title", searched);
+        FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
+                .setQuery(query, Item.class)
+                .build();
     }
 
 
