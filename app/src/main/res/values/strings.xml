@@ -6,7 +6,6 @@
     <string name="logout">Logout</string>
     <string name="login">Login</string>
     <string name="register">Create New Account</string>
-    <string name="firestore_button">Launch Firestore Activity</string>
     <string name="title_label">Title:</string>
     <string name="description_label">Description:</string>
     <string name="price_label">Price:</string>
@@ -19,4 +18,8 @@
     <string name="myPost">My Posts</string>
     <string name="contact">Contact Seller</string>
     <string name="search">Search</string>
+    <string name="searchTitles">Search Titles...</string>
+    <string name="viewPost">View Post</string>
+    <string name="editPost">Edit Post</string>
+    <string name="homePage">Home Page</string>
 </resources>

@@ -19,27 +19,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomePage">
+
+        <activity android:name=".HomePage"
+            android:label="@string/homePage">
         </activity>
+
         <activity android:name=".NewPost"
+                  android:label="@string/newPost"
                   android:parentActivityName=".HomePage">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage"/>
         </activity>
+
         <activity android:name=".EditPost"
+                  android:label="@string/editPost"
                   android:parentActivityName=".HomePage">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage"/>
         </activity>
+
         <activity android:name=".ViewPost"
+                  android:label="@string/viewPost"
                   android:parentActivityName=".HomePage">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage"/>
         </activity>
         <activity android:name=".MyPosts"
+            android:label="@string/myPost"
             android:parentActivityName=".HomePage">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

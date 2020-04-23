@@ -1,6 +1,5 @@
 package edu.uncw.SeahawkSellers;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +25,8 @@ public class HomePage extends AppCompatActivity {
     private final FirebaseFirestore mDb = FirebaseFirestore.getInstance();
     private ItemRecyclerAdapter mAdapter;
     private EditText searchBar;
+    private String email;
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -38,10 +39,10 @@ public class HomePage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = mAuth.getCurrentUser();
-        final String email = currentUser.getEmail();
+        email = currentUser.getEmail();
         searchBar= findViewById(R.id.search_edit);
 
-        final RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         Query query = mDb.collection(ITEM);
@@ -58,13 +59,9 @@ public class HomePage extends AppCompatActivity {
                     editPost(item, id);
                 } else {
                     viewPost(item);
-
-
                 }
-
             }
         });
-
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -150,10 +147,23 @@ public class HomePage extends AppCompatActivity {
 
     public void search(View v){
         String searched = searchBar.getText().toString();
-        Query query = mDb.collection(ITEM).whereArrayContains("title", searched);
+        Query query = mDb.collection(ITEM).whereEqualTo("title", searched);
         FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
                 .setQuery(query, Item.class)
                 .build();
+        mAdapter = new ItemRecyclerAdapter(options, new ItemRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
+                if (item.getSeller().equals(email)) {
+                    String id = mAdapter.getSnapshots().getSnapshot(position).getId();
+                    editPost(item, id);
+                } else {
+                    viewPost(item);
+                }
+            }
+        });
+        recyclerView.setAdapter(mAdapter);
     }
 
 
