@@ -22,4 +22,5 @@
     <string name="viewPost">View Post</string>
     <string name="editPost">Edit Post</string>
     <string name="homePage">Home Page</string>
+    <string name="clear">Clear</string>
 </resources>

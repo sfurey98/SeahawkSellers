@@ -16,11 +16,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/title_label"
         android:textColor="@color/navy"
         android:textSize="24dp"
-        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
     <EditText
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:ems="8"
+        android:ems="12"
         android:textColor="@color/navy"
         app:layout_constraintStart_toStartOf="@id/title"
         app:layout_constraintTop_toBottomOf="@id/title"
@@ -46,12 +46,13 @@
         app:layout_constraintTop_toBottomOf="@id/title_display" />
     <EditText
         android:id="@+id/description_display"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:ems="14"
+        android:layout_marginEnd="10dp"
         android:textColor="@color/navy"
         app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -81,19 +82,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:inputType="number"
-        android:ems="3"
         android:textColor="@color/navy"
         app:layout_constraintStart_toEndOf="@id/priceSign"
         app:layout_constraintTop_toBottomOf="@id/price"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/post_button"
+        android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="@drawable/my_button"
         android:padding="10dp"
-        android:background="@color/navy"
         android:onClick="editItem"
         android:text="@string/saveChanges"
         android:textColor="@color/white"
@@ -106,15 +106,13 @@
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:padding="10dp"
-        android:background="@color/navy"
+        android:background="@drawable/my_button"
         android:onClick="deleteItem"
         android:text="@string/delete"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/post_button"
+        app:layout_constraintStart_toEndOf="@id/save_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/price_display"
+        app:layout_constraintTop_toTopOf="@id/save_button"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

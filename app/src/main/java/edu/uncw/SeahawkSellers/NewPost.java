@@ -51,8 +51,8 @@ public class NewPost extends AppCompatActivity {
         }
         FirebaseUser currentUser = mAuth.getCurrentUser();
         String user= currentUser.getEmail();
-        String title = titleEdit.getText().toString();
-        String description = descriptionEdit.getText().toString();
+        String title = titleEdit.getText().toString().trim();
+        String description = descriptionEdit.getText().toString().trim();
         String price = priceEdit.getText().toString();
 
         Item newItem = new Item(title, description, price, user);

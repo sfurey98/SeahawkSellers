@@ -1,6 +1,7 @@
 package edu.uncw.SeahawkSellers;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -28,6 +29,8 @@ public class ViewPost extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         titleDisplay = findViewById(R.id.title_display);
+        Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
+        titleDisplay.setTypeface(boldTypeface);
         descriptionDisplay = findViewById(R.id.description_display);
         priceDisplay = findViewById(R.id.price_display);
         sellerDisplay = findViewById(R.id.seller_display);
@@ -37,7 +40,7 @@ public class ViewPost extends AppCompatActivity {
         seller = intent.getStringExtra("SELLER");
         titleDisplay.setText(title);
         descriptionDisplay.setText(description);
-        priceDisplay.setText("$" +price);
+        priceDisplay.setText("USD $" +price);
         sellerDisplay.setText(seller);
     }
 

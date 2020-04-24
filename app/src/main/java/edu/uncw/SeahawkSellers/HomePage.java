@@ -146,23 +146,31 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void search(View v){
-        String searched = searchBar.getText().toString();
-        Query query = mDb.collection(ITEM).whereEqualTo("title", searched);
+        String searched = searchBar.getText().toString().trim();
+        if (searched.equals("")){
+            Query query = mDb.collection(ITEM);
+            FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
+                    .setQuery(query, Item.class)
+                    .build();
+            mAdapter.updateOptions(options);
+        }
+        else {
+            Query query = mDb.collection(ITEM).whereEqualTo("title", searched);
+            FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
+                    .setQuery(query, Item.class)
+                    .build();
+            mAdapter.updateOptions(options);
+        }
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    public void clear(View v){
+        searchBar.setText("");
+        Query query = mDb.collection(ITEM);
         FirestoreRecyclerOptions<Item> options = new FirestoreRecyclerOptions.Builder<Item>()
                 .setQuery(query, Item.class)
                 .build();
-        mAdapter = new ItemRecyclerAdapter(options, new ItemRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Item item = mAdapter.getSnapshots().getSnapshot(position).toObject(Item.class);
-                if (item.getSeller().equals(email)) {
-                    String id = mAdapter.getSnapshots().getSnapshot(position).getId();
-                    editPost(item, id);
-                } else {
-                    viewPost(item);
-                }
-            }
-        });
+        mAdapter.updateOptions(options);
         recyclerView.setAdapter(mAdapter);
     }
 
