@@ -28,7 +28,6 @@ public class HomePage extends AppCompatActivity {
     private String email;
     private RecyclerView recyclerView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,7 +172,6 @@ public class HomePage extends AppCompatActivity {
         mAdapter.updateOptions(options);
         recyclerView.setAdapter(mAdapter);
     }
-
 
 }
 

@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/navy</item>
         <item name="colorPrimaryDark">@color/yellow</item>
         <item name="colorAccent">@color/teal</item>
-        <item name="background">@drawable/uncwlogo2</item>
+        <item name="background">@drawable/background</item>
 
 
     </style>
